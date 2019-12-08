@@ -3,9 +3,9 @@ package pageobject.atmosphere;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import pageobject.AbstractPage;
 
-public class AtmosphereMainPage {
+public class AtmosphereMainPage extends AbstractPage {
 
 
   @FindBy(xpath = "//input[@placeholder='Search for shoes, jackets, water bottles and more']")
@@ -15,7 +15,7 @@ public class AtmosphereMainPage {
   private WebElement searchSubmitButton ;
 
   public AtmosphereMainPage(WebDriver webDriver){   //constructor class
-    PageFactory.initElements(webDriver,this);
+    super(webDriver);
   }
 
   public void searchForParkas(String searchText){

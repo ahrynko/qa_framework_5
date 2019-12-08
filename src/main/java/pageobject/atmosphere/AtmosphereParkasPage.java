@@ -3,11 +3,9 @@ package pageobject.atmosphere;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import pageobject.AbstractPage;
 
-public class AtmosphereParkasPage {
-
-  private WebDriver webDriver;
+public class AtmosphereParkasPage extends AbstractPage {
 
   public WebElement getChoiceItem() {
     return choiceItem;
@@ -26,7 +24,7 @@ public class AtmosphereParkasPage {
   private WebElement addToCardItem;
 
   public AtmosphereParkasPage(WebDriver webDriver){  //constructor class
-    PageFactory.initElements(webDriver,this);
+    super(webDriver);
   }
 
   public void choiceParakasItem(){

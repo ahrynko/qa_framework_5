@@ -1,12 +1,9 @@
 package atmosphereStore;
 
-import org.junit.After;
-import org.junit.Before;
+import common.BaseTest;
 import org.junit.Test;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,22 +13,15 @@ import pageobject.atmosphere.AtmosphereParkasPage;
 
 import java.util.concurrent.TimeUnit;
 
-public class AtmosphereTestsSuite {
-
-
-  private WebDriver webDriver;
-  private WebDriverWait webDriverWait;
-
-  @Before
-  public void initDriver(){
-    System.setProperty("webdriver.chrome.driver","chromedriver.exe");
-    webDriver = new ChromeDriver();
-    webDriver.manage().window().maximize();
-  }
+public class AtmosphereTestsSuite extends BaseTest {
 
   @Test
   public void verifyAddItemToCartFunctionality (){
-    webDriver.get("https://www.atmosphere.ca/");
+
+    String atmosphereUrl = propertyHelper.readProperty("atmosphere.site.url");
+
+    webDriver.get(atmosphereUrl);
+
     webDriver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 
     AtmosphereMainPage searchPage = new AtmosphereMainPage(webDriver);
@@ -70,11 +60,6 @@ public class AtmosphereTestsSuite {
     Assert.assertEquals("You have incorrectly selected the name in the CART",expectedNameProductCart,actualNameProductPage);
     Assert.assertEquals("You have incorrectly selected the colour in the CART",expectedColourProductCart,actualColourProductPage);
     Assert.assertEquals("You have incorrectly selected the size in the CART",expectedSizeProductPage,actualSizeProductPage);
-  }
 
-  @After
-  public void shutDownDriver(){
-    webDriver.close();
-    webDriver.quit();
   }
 }

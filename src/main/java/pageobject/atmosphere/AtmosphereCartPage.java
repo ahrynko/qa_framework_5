@@ -3,15 +3,15 @@ package pageobject.atmosphere;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import pageobject.AbstractPage;
 
-public class AtmosphereCartPage {
+public class AtmosphereCartPage extends AbstractPage {
 
   @FindBy(xpath = "//a[@class='header-cart__trigger drawer-ui__toggle']")
   private WebElement cart;
 
   public AtmosphereCartPage(WebDriver webDriver){ //constructor class
-    PageFactory.initElements(webDriver,this);
+    super(webDriver);
   }
 
   public void parakasItemInCart(){
