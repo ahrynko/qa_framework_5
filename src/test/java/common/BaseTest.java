@@ -13,10 +13,9 @@ public abstract class BaseTest {
   protected PropertyHelper propertyHelper = new PropertyHelper();  // create Object propertyHelper
 
   @Before
-  public void initDriver(){
+  public void initDriver(){  //init driver
     System.setProperty("webdriver.chrome.driver","chromedriver.exe");
     webDriver = new ChromeDriver();
-    webDriver.manage().window().maximize();
   }
 
   @After

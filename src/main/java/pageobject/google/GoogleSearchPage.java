@@ -1,5 +1,6 @@
 package pageobject.google;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,9 +25,14 @@ public class GoogleSearchPage extends AbstractPage {
     super(webDriver);
   }
 
-  public void searchFor(String searchText){  //method -протащили в конструктор, искать любой текст
+  public void searchFor(String searchText){  //method -протащили в конструктор, искать любой текст не нажимая enter
     //wait
     searchInput.sendKeys(searchText);   //enter text
+  }
+
+  public GoogleSearchResultsPage searchForWithEnter(String searchText){  // любой текст
+    searchInput.sendKeys(searchText,Keys.ENTER); // класс Keys- нажатия клавиатуры (input)
+    return new GoogleSearchResultsPage(webDriver);  //возврат новой страницы
   }
 
   public List<String> getPredictiveSearchListText() {   //method -который достанет список элементов

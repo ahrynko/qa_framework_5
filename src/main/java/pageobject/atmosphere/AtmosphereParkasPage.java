@@ -3,6 +3,7 @@ package pageobject.atmosphere;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageobject.AbstractPage;
 
 public class AtmosphereParkasPage extends AbstractPage {
@@ -36,6 +37,7 @@ public class AtmosphereParkasPage extends AbstractPage {
   }
 
   public void choiseParakasSizeItem(){
+    webDriverWait.until(ExpectedConditions.visibilityOf(choiceSizeItem));
     choiceSizeItem.click();
   }
 

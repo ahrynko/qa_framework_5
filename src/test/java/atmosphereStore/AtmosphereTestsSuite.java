@@ -22,8 +22,6 @@ public class AtmosphereTestsSuite extends BaseTest {
 
     webDriver.get(atmosphereUrl);
 
-    webDriver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-
     AtmosphereMainPage searchPage = new AtmosphereMainPage(webDriver);
     searchPage.searchForParkas("PARKAS");
     searchPage.searchParkasPage();
@@ -42,9 +40,6 @@ public class AtmosphereTestsSuite extends BaseTest {
 
     parkasPage.choiseParakasColourItem();
     String  actualColourProductPage = parkasPage.productParkaColour.getText();
-
-    webDriverWait = new WebDriverWait(webDriver,10);
-    webDriverWait.until(ExpectedConditions.elementToBeClickable(parkasPage.productParkaColour));
 
     parkasPage.choiseParakasSizeItem();
     String  actualSizeProductPage = parkasPage.productParkaSize.getText();
