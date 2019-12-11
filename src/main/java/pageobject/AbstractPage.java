@@ -1,15 +1,19 @@
 package pageobject;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageobject.rozetka.RozetkaMainPage;
 
+import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractPage{  //выносим все общее
 
   protected WebDriver webDriver;  // copy link  driver
   protected WebDriverWait webDriverWait;
+  protected Actions action;
 
   public AbstractPage(WebDriver webDriver) {
     this.webDriver = webDriver;
@@ -17,6 +21,7 @@ public abstract class AbstractPage{  //выносим все общее
     webDriver.manage().window().maximize();
     webDriver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); // класс отвечает за неявные ожидания (call 1 раз)
     PageFactory.initElements(webDriver,this);
+    action = new Actions(webDriver);
   }
 
 }
