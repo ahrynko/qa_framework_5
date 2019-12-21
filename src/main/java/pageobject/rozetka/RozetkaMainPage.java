@@ -30,7 +30,7 @@ public class RozetkaMainPage extends AbstractPage {
     return headerLogo.getAttribute("title");
   }
 
-  public RozetkaWebcamPage choicewebCameraMenuLink(){
+  public RozetkaWebcamPage choiceWebCameraMenuLink(){
     action.moveToElement(menuCategoriesLink).build().perform();
     webDriverWait.until(ExpectedConditions.visibilityOf(webCameraMenuLink));
     action.moveToElement(webCameraMenuLink).build().perform();
