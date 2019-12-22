@@ -9,5 +9,8 @@
         <module name="qa_framework_4" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="qa_framework_4" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
