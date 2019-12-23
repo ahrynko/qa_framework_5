@@ -19,7 +19,9 @@ public class HotlineTests extends BaseTest {
        HotlinePage hotlinePage = new HotlinePage(webDriver);
 
         List<HotlineItem> unsortedHotlineItemsList = hotlinePage.getHotlineProducts();
-//        unsortedHotlineItemsList.sort(Collections.reverseOrder());
+
+//        unsortedHotlineItemsList.sort(Collections.reverseOrder());  //от большему к меньшему
+        Collections.sort(unsortedHotlineItemsList);  // по возрастанию
 
         hotlinePage.orderBy("зростанням ціни");
 
