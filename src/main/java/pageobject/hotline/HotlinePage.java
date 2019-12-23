@@ -1,5 +1,6 @@
 package pageobject.hotline;
 
+import common.data.PartialUrl;
 import common.model.HotlineItem;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@PartialUrl(value = "/mobile/chehly-sumki-futlyary-dlya-mobilnyh-i-smartfonov/71061-380639/")
 public class HotlinePage extends AbstractPage{
 
     @FindBys({
