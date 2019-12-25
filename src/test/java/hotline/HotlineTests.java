@@ -1,7 +1,7 @@
 package hotline;
 
 import common.BaseTest;
-import common.model.HotlineItem;
+import pageobject.hotline.model.HotlineItem;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.unitils.reflectionassert.ReflectionAssert;

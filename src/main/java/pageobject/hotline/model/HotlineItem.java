@@ -1,7 +1,6 @@
-package common.model;
+package pageobject.hotline.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
 @AllArgsConstructor  //create constr with values String,integer

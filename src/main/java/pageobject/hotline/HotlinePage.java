@@ -1,7 +1,7 @@
 package pageobject.hotline;
 
 import common.data.PartialUrl;
-import common.model.HotlineItem;
+import pageobject.hotline.model.HotlineItem;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
