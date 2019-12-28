@@ -2,6 +2,8 @@ package hotline;
 
 import common.BaseTest;
 import org.apache.log4j.Logger;
+import org.assertj.core.api.SoftAssertions;
+import org.junit.Assert;
 import pageobject.hotline.model.HotlineItem;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -44,6 +46,39 @@ public class HotlineTests extends BaseTest {
         ReflectionAssert.assertReflectionEquals("There is incorrect sorting found! ",
                 unsortedHotlineItemsList,sortedHotlineItemsList);
 
+    }
+    @Test
+    public void checkFirstItemsAreSortedInAscendingOrder(){
+
+      WebDriver webDriver = getWebDriver();
+      String url =("https://hotline.ua/mobile/chehly-sumki-futlyary-dlya-mobilnyh-i-smartfonov/71061-380639/");
+      webDriver.get(url);
+      HotlinePage hotlinePage = new HotlinePage(webDriver);
+
+      List<HotlineItem> unsortedHotlineItemsList = hotlinePage.getHotlineProducts();
+      Collections.sort(unsortedHotlineItemsList);  // по возрастанию
+
+      hotlinePage.orderBy("зростанням ціни");
+      List<HotlineItem> sortedHotlineItemsList = hotlinePage.getHotlineItemsUsingStreamApi();
+
+      HotlineItem firstExpected = unsortedHotlineItemsList.get(0);
+      HotlineItem firstActual = new HotlineItem("Some title",455); //sortedHotlineItemsList.get(0); //достали со страницы
+      //SoftAssertions
+      /*SoftAssertions softAssertions = new SoftAssertions();
+
+      softAssertions.assertThat(firstExpected.getTitle())
+              .as("Expected title")
+              .isEqualTo(firstActual.getTitle());
+
+      softAssertions.assertThat(firstExpected.getPrice())
+              .as("Expected price")
+              .isEqualTo(firstActual.getPrice());
+
+      softAssertions.assertAll();*/
+
+      Assert.assertEquals("There is incorrected title displayed!",firstExpected.getTitle(), firstActual.getTitle());
+      Assert.assertEquals("There is incorrected price displayed!",firstExpected.getPrice(), firstActual.getPrice());
+     // отработал только один Assert
     }
 
 }
