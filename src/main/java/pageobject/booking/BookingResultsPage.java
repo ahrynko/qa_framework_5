@@ -22,6 +22,6 @@ public class BookingResultsPage extends AbstractPage {
 
     public String  getFirstAvailableHotelDestination(){
 //        return StringUtils.trim(searchResults.get(0).getText()).; //.substring(16,22
-        return StringUtils.substringBetween(searchResults.get(0).getText()," "," ");
+        return StringUtils.substringBetween(searchResults.get(0).getText(),", "," ");
     }
 }
