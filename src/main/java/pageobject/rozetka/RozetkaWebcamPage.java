@@ -16,22 +16,22 @@ public class RozetkaWebcamPage extends AbstractPage {
     super(webDriver);
   }
 
-  @FindBy(xpath = "//a[@name='producer_296']")
+  @FindBy(xpath = "//label[contains(text(),'Razer')]")
   private WebElement filterRazer;
 
-  @FindBy(xpath = "(//a[@class='responsive-img centering-child-img'])[1]//img") // catalog image
-  private WebElement firstCatalogImageWebcam;
+  @FindBy(xpath = "//button[@class='button button_color_green button_size_medium search-form__submit']")
+  private WebElement buttonSearchFormSubmit;
 
   @FindBys({
-          @FindBy( xpath = "//div[@class='g-i-tile-i-title clearfix']//a")
+          @FindBy( xpath = "//a[@class='goods-tile__heading']//span[@class='goods-tile__title']")
   })
   private List<WebElement> webcamSearchListRazer; //list urls
 
   public void choiceRazerCheckboxItem(){
 
-    webDriverWait.until(ExpectedConditions.visibilityOf(firstCatalogImageWebcam));
+    webDriverWait.until(ExpectedConditions.visibilityOf(buttonSearchFormSubmit));
     action.moveToElement(filterRazer).build().perform();
-    webDriverWait.until(ExpectedConditions.elementToBeClickable(filterRazer));
+    webDriverWait.until(ExpectedConditions.visibilityOf(filterRazer));
     filterRazer.click();
   }
 

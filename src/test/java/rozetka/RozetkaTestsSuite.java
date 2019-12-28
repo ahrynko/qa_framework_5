@@ -26,6 +26,8 @@ public class RozetkaTestsSuite extends BaseTest {
     List<String> webcamSearchListRazer = webcamPage.getWebcamSearchListRazerText();
     Assert.assertFalse("There are not item found! ",webcamSearchListRazer.isEmpty()); //проверка что List не пустой
 
+    System.out.print(webcamSearchListRazer);
+
     webcamSearchListRazer.forEach(item -> { //item - строка,
       Assert.assertTrue("There is not such item present! ",item.contains("Razer")); // {анонимное тело функции}
     });
