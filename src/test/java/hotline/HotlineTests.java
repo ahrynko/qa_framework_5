@@ -81,4 +81,26 @@ public class HotlineTests extends BaseTest {
      // отработал только один Assert
     }
 
+    @Test
+    public void verifyHotlineDescendingSortingTest() {
+        WebDriver webDriver = getWebDriver();
+        String url = "https://hotline.ua/mobile/zaschitnaya-plenka-dlya-mobilnyh-telefonov/81002/";
+        webDriver.get(url);
+        logger.info(String.format("Opened following url '%s'",url));
+
+        HotlinePage hotlinePage = new HotlinePage(webDriver);
+
+        List<HotlineItem> unsortedHotlineItemsList = hotlinePage.getHotlineItemsUsingStreamApi();
+        logger.info("Before sorting list");
+        unsortedHotlineItemsList.sort(Collections.reverseOrder());
+        logger.info("After sorting list");
+
+        hotlinePage.orderBy("зменшенням ціни");
+        logger.info("Click to orderSelect ");
+
+        List<HotlineItem> sortedHotlineItemsList = hotlinePage.getHotlineItemsUsingStreamApi();
+        ReflectionAssert.assertReflectionEquals("There is incorrect sorting found! ",
+                unsortedHotlineItemsList,sortedHotlineItemsList);
+        logger.info("Test passed");
+    }
 }

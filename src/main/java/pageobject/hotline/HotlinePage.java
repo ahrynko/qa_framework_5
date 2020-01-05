@@ -60,7 +60,5 @@ public class HotlinePage extends AbstractPage{
                     Integer price = Integer.valueOf(product.findElement(By.xpath(PRICE_LOCATOR)).getText());
                     return new HotlineItem(title,price);
                 }).collect(Collectors.toList());
-
     }
-
 }
