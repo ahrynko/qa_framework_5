@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageobject.AbstractPage;
 
 import java.util.List;
+import org.apache.log4j.Logger;
 import java.util.stream.Collectors;
 
 public class RozetkaWebcamPage extends AbstractPage {
@@ -27,20 +28,23 @@ public class RozetkaWebcamPage extends AbstractPage {
   })
   private List<WebElement> webcamSearchListRazer; //list urls
 
+  private Logger logger = Logger.getLogger(RozetkaWebcamPage.class); //зарегистрировали Logger класса
+
   public void choiceRazerCheckboxItem(){
 
     webDriverWait.until(ExpectedConditions.visibilityOf(buttonSearchFormSubmit));
     action.moveToElement(filterRazer).build().perform();
     webDriverWait.until(ExpectedConditions.visibilityOf(filterRazer));
     filterRazer.click();
+    logger.info("We are choiced  filter Razer's model");
   }
 
   public List<String> getWebcamSearchListRazerText() { //method -который достанет список элементов
+    webDriverWait.until(ExpectedConditions.invisibilityOfAllElements(webcamSearchListRazer));
     return webcamSearchListRazer
             .stream()
             .map(item -> item.getText())
-            .peek(webcamSearchListRazerText -> webcamSearchListRazerText.toString())
+//            .peek((e) -> System.out.print("," + e))
             .collect(Collectors.toList());
-    //конвертация списка вебэлементов в список строк
   }
 }

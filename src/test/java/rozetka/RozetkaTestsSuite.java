@@ -1,6 +1,7 @@
 package rozetka;
 
 import common.BaseTest;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.interactions.Actions;
@@ -10,6 +11,8 @@ import pageobject.rozetka.RozetkaWebcamPage;
 import java.util.List;
 
 public class RozetkaTestsSuite extends BaseTest {
+
+  private Logger logger = Logger.getLogger(RozetkaTestsSuite.class); //зарегистрировали Logger класса
 
   @Test
   public void verifyProductFiltration(){
@@ -26,12 +29,12 @@ public class RozetkaTestsSuite extends BaseTest {
     List<String> webcamSearchListRazer = webcamPage.getWebcamSearchListRazerText();
     Assert.assertFalse("There are not item found! ",webcamSearchListRazer.isEmpty()); //проверка что List не пустой
 
-    System.out.print(webcamSearchListRazer);
+    logger.info("We are got list Razer webcams");
 
     webcamSearchListRazer.forEach(item -> { //item - строка,
       Assert.assertTrue("There is not such item present! ",item.contains("Razer")); // {анонимное тело функции}
     });
-    System.out.print(webcamSearchListRazer);
-    System.out.print(webcamSearchListRazer.size());
+
+    logger.info(webcamSearchListRazer.size());
   }
 }
